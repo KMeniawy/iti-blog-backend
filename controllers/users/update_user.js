@@ -1,3 +1,8 @@
+const { uploadCloud } = require("../../middlewares/cloudinary/cloudinary");
+const {
+  sharpHandler,
+  uploadSingleImage,
+} = require("../../middlewares/upload-img/upload-img");
 const { userModel } = require("../../models/index");
 const { errorHandler, successHandler } = require("../../utils/responseHandler");
 const { hashPassword, comparePassword } = require("../auth/auth");
@@ -24,6 +29,14 @@ exports.updateUser = async (req, res, next) => {
     }
 
     await userModel.findByIdAndUpdate(req.userID, userBody);
+
+    if (req.files?.photo) {
+      userBody.photo = await uploadCloud(...req.files.photo);
+    }
+
+    if (req.files?.cover_photo) {
+      userBody.cover_photo = await uploadCloud(...req.files.cover_photo);
+    }
 
     await userModel.findByIdAndUpdate(req.userID, userBody);
 
