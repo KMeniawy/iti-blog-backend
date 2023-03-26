@@ -45,6 +45,7 @@ app.all("*", (req, res, next) => {
 });
 
 //database server
+mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DATABASE).then((_) => {
   console.log("database is connected successfully");
 });

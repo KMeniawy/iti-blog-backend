@@ -17,13 +17,7 @@ const userSchema = new Schema(
     password: {
       type: String,
       select: false,
-    },
-    photo: {
-      type: Array,
-      default: null,
-    },
-    cover_photo: Array,
-    bio: String,
+    }
   },
   { timestamps: true },
 
