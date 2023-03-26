@@ -1,4 +1,3 @@
-const { uploadCloud } = require("../../middlewares/cloudinary/cloudinary");
 const { uploadCloudBB } = require("../../middlewares/imgbb/imgbb");
 const { postModel } = require("../../models");
 const { successHandler, errorHandler } = require("../../utils/responseHandler");
