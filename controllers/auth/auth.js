@@ -36,16 +36,15 @@ const protect = async (req, res, next) => {
     } else if (req.cookie?.jwt) {
       token = req.cookie.jwt;
     }
-
+    console.log("token",token);
+    console.log("jwt_secert",process.env.JWT_SECRET);
     const decoded = await util.promisify(jwt.verify)(
       token,
       process.env.JWT_SECRET
     );
-
     const validUser = await userModel.findById(decoded.id);
 
     if (!validUser) throw err;
-
     req.userID = decoded.id;
     req.user = validUser;
     next();
