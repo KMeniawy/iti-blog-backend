@@ -22,6 +22,7 @@ const signinScehma = joi.object({
 
 const signupValid = async (req, res, next) => {
   try {
+    console.log(req.body);
     await signupSchema.validateAsync(req.body);
     next();
   } catch (err) {
