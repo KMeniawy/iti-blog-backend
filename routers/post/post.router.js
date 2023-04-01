@@ -18,7 +18,7 @@ const postRouter = express.Router();
 postRouter.get("/", getPosts);
 postRouter.get("/:postID", getOnePost);
 postRouter.post(
-  "",
+  "/",
   protect,
   uploadSingleImage("photo"),
   validPost,

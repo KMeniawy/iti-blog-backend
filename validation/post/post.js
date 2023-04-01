@@ -9,6 +9,8 @@ const postSchema = joi.object({
 });
 
 const validPost = async (req, res, next) => {
+  console.log(req.body);
+  console.log(req.file,req.files);
   try {
     await postSchema.validateAsync(req.body);
     next();
